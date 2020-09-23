@@ -1,5 +1,116 @@
-﻿@{
+﻿@model List<NetCoreExamProject.Models.Post>;
+@{
     ViewData["Title"] = "Create Exam";
 }
 
-<select class="form-control"></select>
+<select class="form-control" onchange="onTitleChanged()" id="title-select">
+    <option selected data-content="Please select title.">SELECT</option>
+    @foreach (var item in Model)
+    {
+        <option value="@item.Link" data-content="@item.Content">@item.Title</option>
+    }
+</select>
+<div id="content-area">
+    Please select title.
+</div>
+@for (int i = 1; i < 5; i++)
+{
+    <div class="question">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div>
+                        <label>QUESTION @i:</label>
+                    </div>
+                    <input type="text" id="question_@i" name="question_@i" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="box left-box">
+                    <div>
+                        <label>A)</label>
+                    </div>
+                    <input type="text" id="optionA_@i" name="optionA_@i" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box right-box">
+                    <div>
+                        <label>B)</label>
+                    </div>
+                    <input type="text" id="optionB_@i" name="optionB_@i" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="box left-box">
+                    <div>
+                        <label>C)</label>
+                    </div>
+                    <input type="text" id="optionC_@i" name="optionC_@i" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box right-box">
+                    <div>
+                        <label>D)</label>
+                    </div>
+                    <input type="text" id="optionD_@i" name="optionD_@i" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <center>
+                    <div class="box centered-box">
+                        <div>
+
+                            <label>ANSWER:</label>
+                        </div>
+                        <select id="answer_@i" name="answer_@i" class="form-control">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+}
+<button class="btn-success btn-lg" style="width:100%" type="button" onclick="createExamButtonClick()">CREATE EXAM</button>
+
+
+
+
+<script src="~/js/CreateExam.js"></script>
+<style>
+    #content-area {
+        border: gray 2px solid;
+        margin: 10px 0px;
+        padding: 10px;
+        height: 50vh;
+        overflow-y: auto;
+    }
+
+    .box {
+        width: 100%;
+        display: inline-flex;
+        padding: 5px;
+        border: gray 2px solid;
+        margin-bottom: 10px;
+    }
+
+    .centered-box {
+        width: 50%;
+    }
+
+    .question {
+        margin-bottom: 30px;
+    }
+
+    .box > div {
+        white-space: nowrap;
+        display: flex;
+        align-items: flex-end;
+        margin-right: 15px;
+    }
+</style>

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace NetCoreExamProject.Models
 {
-    public class Post
+    public class Exam
     {
-        public string Title { get; set; }
-        public string Content { get; set; }
         [Key]
-        public string Link { get; set; }
+        public int Id { get; set; }
+        public Post Post { get; set; }
+        public List<Question> Questions { get; set; }
     }
 }

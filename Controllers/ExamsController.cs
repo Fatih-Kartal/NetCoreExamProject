@@ -15,8 +15,13 @@ namespace NetCoreExamProject.Controllers
     {
         public IActionResult Index()
         {
-            GetLast5Post();
-            return View();
+            var posts = GetLast5Post();
+            return View(posts);
+        }
+        [HttpPost]
+        public string CreateExam(Exam exam)
+        {
+            return "();";
         }
 
         public List<Post> GetLast5Post()
@@ -27,9 +32,9 @@ namespace NetCoreExamProject.Controllers
             for (int i = 0; i < 5; i++)
             {
                 var title = document.DocumentNode.SelectSingleNode(cardComponents[i].XPath + "/div[1]/ul[1]/li[2]/a[2]/h2").InnerText;
-                //var link = cardComponents[i].FirstChild.FirstChild.FirstChild.FirstChild.Attributes["href"].Value;
-                //var content = GetContentOfPost(link);
-                //posts.Add(new Post { Title = title, Content = content });
+                var link = document.DocumentNode.SelectSingleNode(cardComponents[i].XPath + "/div[1]/ul[1]/li[2]/a[2]").Attributes["href"].Value;
+                var content = GetContentOfPost(link);
+                posts.Add(new Post { Title = title, Content = content, Link = link });
                 // /html/body/div[3]/div/div[3]/div/div/div[2]/div[1]/div/div[1]/div[1]/div[1]/div/ul/li[2]/a[2]/h2
             }
 
@@ -53,6 +58,11 @@ namespace NetCoreExamProject.Controllers
             HtmlDocument document = new HtmlDocument();
             document.LoadHtml(html);
             return document;
+
+            var htmlWeb = new HtmlWeb();
+            htmlWeb.OverrideEncoding = Encoding.UTF8;
+            var doc = htmlWeb.Load(url);
+            return doc;
         }
     }
 }
