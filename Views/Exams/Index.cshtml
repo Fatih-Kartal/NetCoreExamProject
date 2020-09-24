@@ -4,10 +4,10 @@
 }
 
 <select class="form-control" onchange="onTitleChanged()" id="title-select">
-    <option selected data-content="Please select title.">SELECT</option>
+    <option selected value="">SELECT</option>
     @foreach (var item in Model)
     {
-        <option value="@item.Link" data-content="@item.Content">@item.Title</option>
+        <option value="@item.Link">@item.Title</option>
     }
 </select>
 <div id="content-area">
@@ -76,41 +76,10 @@
         </div>
     </div>
 }
+@Html.AntiForgeryToken()
 <button class="btn-success btn-lg" style="width:100%" type="button" onclick="createExamButtonClick()">CREATE EXAM</button>
 
 
 
 
 <script src="~/js/CreateExam.js"></script>
-<style>
-    #content-area {
-        border: gray 2px solid;
-        margin: 10px 0px;
-        padding: 10px;
-        height: 50vh;
-        overflow-y: auto;
-    }
-
-    .box {
-        width: 100%;
-        display: inline-flex;
-        padding: 5px;
-        border: gray 2px solid;
-        margin-bottom: 10px;
-    }
-
-    .centered-box {
-        width: 50%;
-    }
-
-    .question {
-        margin-bottom: 30px;
-    }
-
-    .box > div {
-        white-space: nowrap;
-        display: flex;
-        align-items: flex-end;
-        margin-right: 15px;
-    }
-</style>

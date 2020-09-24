@@ -69,3 +69,46 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+#content-area {
+    border: gray 2px solid;
+    margin: 10px 0px;
+    padding: 10px;
+    height: 50vh;
+    overflow-y: auto;
+}
+
+.box {
+    width: 100%;
+    display: inline-flex;
+    padding: 5px;
+    border: gray 2px solid;
+    margin-bottom: 10px;
+}
+
+.centered-box {
+    width: 50%;
+}
+
+.question {
+    margin-bottom: 30px;
+}
+
+.box > div {
+    white-space: nowrap;
+    display: flex;
+    align-items: flex-end;
+    margin-right: 15px;
+}
+
+.selected {
+    background-color: yellow;
+}
+
+.right-answer {
+    background-color: green;
+}
+
+.wrong-answer {
+    background-color: red;
+}

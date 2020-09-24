@@ -1,0 +1,62 @@
+﻿@model NetCoreExamProject.Models.Exam
+@{
+    ViewData["Title"] = "Solve Exam";
+}
+
+
+<select class="form-control" id="title-select">
+    <option selected value="@Model.Post.Link">@Model.Post.Title</option>
+</select>
+<div id="content-area">
+    @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Post.Content))
+</div>
+@for (int i = 1; i < 5; i++)
+{
+    <div class="question">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div>
+                        <label>QUESTION @Model.Questions[i - 1].Title:</label>
+                    </div>
+                    <input type="text" id="question_@i" name="question_@i" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="box box-option left-box options-@i" data-question-id="@i">
+                    <div>
+                        <label>A)</label>
+                    </div>
+                    <input type="text" id="optionA_@i" name="optionA_@i" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box box-option right-box options-@i" data-question-id="@i">
+                    <div>
+                        <label>B)</label>
+                    </div>
+                    <input type="text" id="optionB_@i" name="optionB_@i" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="box box-option left-box options-@i" data-question-id="@i">
+                    <div>
+                        <label>C)</label>
+                    </div>
+                    <input type="text" id="optionC_@i" name="optionC_@i" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box box-option right-box options-@i" data-question-id="@i">
+                    <div>
+                        <label>D)</label>
+                    </div>
+                    <input type="text" id="optionD_@i" name="optionD_@i" class="form-control" readonly />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<button class="btn-success btn-lg" style="width:100%" type="button" onclick="seeResultsButtonClick(@Model.Id)">SEE RESULTS</button>
+
+<script src="~/js/CreateExam.js"></script>

@@ -7,6 +7,7 @@ namespace NetCoreExamProject.Models
         public DbSet<Post> Posts { get; set; }
         public DbSet<Exam> Exams { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Question> Questions { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlite("Filename=./NetCoreExamProject.db");
         public MyDBContext()
         {

@@ -10,6 +10,7 @@ namespace NetCoreExamProject.Models
     {
         [Key]
         public int Id { get; set; }
+        public int ExamId { get; set; }
         public string Title { get; set; }
         public string OptionA { get; set; }
         public string OptionB { get; set; }
