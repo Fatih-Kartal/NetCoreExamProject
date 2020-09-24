@@ -17,9 +17,9 @@
             <div class="col-md-12">
                 <div class="box">
                     <div>
-                        <label>QUESTION @Model.Questions[i - 1].Title:</label>
+                        <label>QUESTION @i: </label>
                     </div>
-                    <input type="text" id="question_@i" name="question_@i" class="form-control" readonly />
+                    <input type="text" id="question_@i" name="question_@i" class="form-control" readonly value="@Model.Questions[i - 1].Title" />
                 </div>
             </div>
             <div class="col-md-6 ">
@@ -27,7 +27,7 @@
                     <div>
                         <label>A)</label>
                     </div>
-                    <input type="text" id="optionA_@i" name="optionA_@i" class="form-control" readonly />
+                    <input type="text" id="optionA_@i" name="optionA_@i" class="form-control" readonly value="@Model.Questions[i-1].OptionA" />
                 </div>
             </div>
             <div class="col-md-6">
@@ -35,7 +35,7 @@
                     <div>
                         <label>B)</label>
                     </div>
-                    <input type="text" id="optionB_@i" name="optionB_@i" class="form-control" readonly />
+                    <input type="text" id="optionB_@i" name="optionB_@i" class="form-control" readonly value="@Model.Questions[i-1].OptionB" />
                 </div>
             </div>
             <div class="col-md-6 ">
@@ -43,7 +43,7 @@
                     <div>
                         <label>C)</label>
                     </div>
-                    <input type="text" id="optionC_@i" name="optionC_@i" class="form-control" readonly />
+                    <input type="text" id="optionC_@i" name="optionC_@i" class="form-control" readonly value="@Model.Questions[i-1].OptionC" />
                 </div>
             </div>
             <div class="col-md-6">
@@ -51,7 +51,7 @@
                     <div>
                         <label>D)</label>
                     </div>
-                    <input type="text" id="optionD_@i" name="optionD_@i" class="form-control" readonly />
+                    <input type="text" id="optionD_@i" name="optionD_@i" class="form-control" readonly value="@Model.Questions[i-1].OptionD" />
                 </div>
             </div>
         </div>

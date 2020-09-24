@@ -9,12 +9,22 @@ using HtmlAgilityPack;
 using Microsoft.CodeAnalysis;
 using NetCoreExamProject.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Http;
 
 namespace NetCoreExamProject.Controllers
 {
     public class ExamsController : Controller
     {
         MyDBContext DB;
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (HttpContext.Session.GetString("User") == null)
+            {
+                var controller = (ExamsController)filterContext.Controller;
+                filterContext.Result = controller.RedirectToAction("Index", "Home");
+            }
+        }
         public ExamsController()
         {
             DB = new MyDBContext();

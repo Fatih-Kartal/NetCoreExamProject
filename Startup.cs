@@ -24,6 +24,8 @@ namespace NetCoreExamProject
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
+            services.AddMvc().AddSessionStateTempDataProvider();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +42,7 @@ namespace NetCoreExamProject
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 
