@@ -104,11 +104,12 @@ namespace NetCoreExamProject.Controllers
         {
             var posts = new List<Post>(5);
             var document = GetHtmlDocument("https://www.wired.com");
-            HtmlNodeCollection cardComponents = document.DocumentNode.SelectNodes("//div[contains(@class, 'card-component ')]");
+            HtmlNodeCollection cardComponents = document.DocumentNode.SelectNodes("/html/body/div[1]/div/main/div[1]/div[1]/section/div[3]/div/div/div/div/div");
+            
             for (int i = 0; i < 5; i++)
             {
-                var title = document.DocumentNode.SelectSingleNode(cardComponents[i].XPath + "/div[1]/ul[1]/li[2]/a[2]/h2").InnerText;
-                var link = document.DocumentNode.SelectSingleNode(cardComponents[i].XPath + "/div[1]/ul[1]/li[2]/a[2]").Attributes["href"].Value;
+                var title = document.DocumentNode.SelectSingleNode(cardComponents[i].XPath + "/div[2]/a/h2").InnerText;
+                var link = document.DocumentNode.SelectSingleNode(cardComponents[i].XPath + "/div[2]/a").Attributes["href"].Value;
                 posts.Add(new Post { Title = title, Link = link });
             }
 
